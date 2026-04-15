@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contacto - Unidad de Apoyo Socioemocional</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="galeria/logopcb.png" alt="Logo Escuela" class="logo-navbar me-3">
+                <span>Unidad de Apoyo Socioemocional</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="psicologia.html">Psicología</a></li>
+                    <li class="nav-item"><a class="nav-link" href="consejeria.html">Consejería</a></li>
+                    <li class="nav-item"><a class="nav-link" href="trabajo_social.html">Trabajo Social</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        <div class="mb-3">
+            <a href="index.html" class="btn btn-secondary">Regresar al Inicio</a>
+        </div>
+        <h1 class="mb-4">Contacto</h1>
+
+        <!-- Información de Contacto -->
+        <div class="row mb-5">
+            <div class="col-lg-8 mx-auto">
+                <div class="card shadow-sm">
+                    <div class="card-body p-4">
+                        <h2 class="mb-4"><i class="fas fa-info-circle me-2"></i>Información de Contacto</h2>
+                        <div class="contact-info">
+                            <p class="mb-3"><i class="fas fa-phone text-primary me-2"></i> <strong>Teléfono de la escuela:</strong> 787-857-2897</p>
+                            <p class="mb-3"><i class="fas fa-map-marker-alt text-danger me-2"></i> <strong>Dirección física de la escuela:</strong> Carretera 156 salida hacia Comerío, Barranquitas, P. R.</p>
+                            <p class="mb-3"><i class="fas fa-envelope text-success me-2"></i> <strong>Dirección postal de la escuela:</strong> Box 1030 Barranquitas, P. R. 00794</p>
+                        </div>
+
+                        <button class="btn btn-primary mt-3 px-4 py-2 shadow rounded-pill" type="button" data-bs-toggle="collapse" data-bs-target="#horariosEscuela" aria-expanded="false" aria-controls="horariosEscuela" style="background: linear-gradient(135deg, #0d6efd 0%, #6610f2 100%); border: none; font-weight: bold; font-size: 1rem; transition: all 0.3s ease; box-shadow: 0 2px 10px rgba(13, 110, 253, 0.3);">
+                            <i class="fas fa-clock me-2"></i>Ver Horarios de la Escuela
+                        </button>
+
+                        <div class="collapse mt-3" id="horariosEscuela">
+                            <div class="horarios-info card card-body bg-light">
+                                <div id="horarios-lista"></div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info mt-4 mb-0">
+                            <i class="fas fa-calendar-check me-2"></i>
+                            <strong>Nota:</strong> Para solicitar citas con nuestros profesionales, visite las páginas de cada servicio.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de Profesionales -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <h2 class="mb-4">Nuestro Equipo</h2>
+            </div>
+
+            <!-- Psicología -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <div class="mb-3" style="font-size: 3rem; color: #6f42c1;">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h5 class="card-title">Psicología</h5>
+                        <p class="card-text text-muted">Apoyo emocional y desarrollo personal</p>
+                        <a href="psicologia.html" class="btn btn-outline-primary">Ver más</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Consejería -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <div class="mb-3" style="font-size: 3rem; color: #0dcaf0;">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h5 class="card-title">Consejería</h5>
+                        <p class="card-text text-muted">Orientación académica y vocacional</p>
+                        <a href="consejeria.html" class="btn btn-outline-info">Ver más</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trabajo Social -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <div class="mb-3" style="font-size: 3rem; color: #198754;">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h5 class="card-title">Trabajo Social</h5>
+                        <p class="card-text text-muted">Apoyo familiar y comunitario</p>
+                        <a href="trabajo_social.html" class="btn btn-outline-success">Ver más</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Preguntas Frecuentes -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <h2 class="mb-4">Preguntas Frecuentes</h2>
+                <div class="accordion" id="faqAccordion">
+                    <!-- Pregunta 1 -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                ¿Cómo puedo solicitar una cita?
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Puede solicitar una cita visitando la página del servicio que necesita (Psicología, Consejería o Trabajo Social) y llenando el formulario de solicitud de cita. También puede comunicarse directamente con la escuela al 787-857-2897.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 2 -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                ¿Cuál es el horario de atención?
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Nuestro horario de atención es de lunes a viernes de 7:00 a.m. a 2:30 p.m. Los fines de semana y días feriados permanecemos cerrados.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 3 -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                ¿Los servicios son confidenciales?
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Sí, todos nuestros servicios son completamente confidenciales. La información compartida con nuestros profesionales está protegida y solo se comparte con el consentimiento del estudiante o en casos requeridos por ley.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 4 -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFour">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                ¿Necesito permiso de mis padres para recibir servicios?
+                            </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Para estudiantes menores de edad, generalmente se requiere el consentimiento de los padres o tutores. Sin embargo, en situaciones de emergencia, nuestros profesionales pueden brindar apoyo inmediato y luego contactar a los padres.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 5 -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFive">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                ¿Qué debo hacer en caso de emergencia?
+                            </button>
+                        </h2>
+                        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                En caso de emergencia durante el horario escolar, diríjase inmediatamente a la oficina principal o comuníquese con cualquier miembro del personal. Fuera del horario escolar, llame al 911 o a la Línea PAS (Primera Ayuda Sicosocial) al 1-800-981-0023.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Líneas de Ayuda -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="alert alert-warning">
+                    <h4 class="alert-heading"><i class="fas fa-phone-volume me-2"></i>Líneas de Ayuda 24/7</h4>
+                    <hr>
+                    <p class="mb-2"><strong>Línea PAS (Primera Ayuda Sicosocial):</strong> 1-800-981-0023</p>
+                    <p class="mb-2"><strong>Línea de Prevención del Suicidio:</strong> 1-888-628-9454</p>
+                    <p class="mb-0"><strong>Emergencias:</strong> 911</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-light text-center py-4 mt-5">
+        <div class="container">
+            <p class="mb-0">&copy; 2026 Unidad de Apoyo Socioemocional. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/scripts.js"></script>
+    <script>
+        // Horarios de la escuela
+        const horarios = {
+            'domingo': 'Cerrado',
+            'lunes': '7 a.m. – 2:30 p.m.',
+            'martes': '7 a.m. – 2:30 p.m.',
+            'miércoles': '7 a.m. – 2:30 p.m.',
+            'jueves': '7 a.m. – 2:30 p.m.',
+            'viernes': '7 a.m. – 2:30 p.m.',
+            'sábado': 'Cerrado'
+        };
+
+        // Función para obtener el día actual en español
+        function obtenerDiaActual() {
+            const dias = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+            const hoy = new Date().getDay();
+            return dias[hoy];
+        }
+
+        // Función para mostrar los horarios
+        function mostrarHorarios() {
+            const diaActual = obtenerDiaActual();
+            const listaHorarios = document.getElementById('horarios-lista');
+            let html = '';
+
+            // Mostrar el día actual primero
+            html += `<div class="dia-actual mb-3 p-3 bg-light rounded">
+                        <strong>Hoy (${diaActual.charAt(0).toUpperCase() + diaActual.slice(1)}):</strong> ${horarios[diaActual]}
+                     </div>`;
+
+            // Mostrar todos los días
+            const diasOrdenados = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+            html += '<div class="horarios-completos">';
+            diasOrdenados.forEach(dia => {
+                const clase = dia === diaActual ? 'fw-bold' : '';
+                html += `<div class="d-flex justify-content-between ${clase}">
+                            <span>${dia.charAt(0).toUpperCase() + dia.slice(1)}</span>
+                            <span>${horarios[dia]}</span>
+                         </div>`;
+            });
+            html += '</div>';
+
+            listaHorarios.innerHTML = html;
+        }
+
+        // Mostrar horarios al cargar la página
+        document.addEventListener('DOMContentLoaded', mostrarHorarios);
+    </script>
+</body>
+</html>

@@ -1,0 +1,406 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Navbar */
+.navbar {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-bottom: 3px solid #5a67d8;
+}
+
+.navbar-brand {
+    font-size: 1.2rem;
+    color: #fff !important;
+}
+
+.navbar-brand small {
+    font-size: 0.8rem;
+    opacity: 0.9;
+}
+
+.logo-navbar {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+}
+
+.nav-link {
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    transform: translateY(-2px);
+}
+
+.navbar-toggler {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+    opacity: 0.1;
+}
+
+.hero .container {
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    color: #424242;
+}
+
+.hero .lead {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    color: #000 !important;
+}
+
+.hero .btn {
+    border-radius: 50px;
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.hero .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* Services Section */
+#servicios {
+    padding: 5rem 0;
+}
+
+#servicios h2 {
+    color: #2c3e50;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+#servicios h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 2px;
+}
+
+.service-card {
+    transition: all 0.3s ease;
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.service-card .icon {
+    margin-bottom: 1.5rem;
+}
+
+.service-card .card-title {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.service-card .card-text {
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.service-card .btn {
+    border-radius: 25px;
+    padding: 0.5rem 1.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.service-card .btn:hover {
+    transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: #fff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero .lead {
+        font-size: 1rem;
+    }
+
+    .service-card {
+        margin-bottom: 2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero {
+        padding: 3rem 0;
+    }
+
+    .hero h1 {
+        font-size: 1.75rem;
+    }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.service-card {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.service-card:nth-child(1) { animation-delay: 0.1s; }
+.service-card:nth-child(2) { animation-delay: 0.2s; }
+.service-card:nth-child(3) { animation-delay: 0.3s; }
+
+/* Contact Page Styles */
+.contact-info p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.contact-info i {
+    color: #667eea;
+    margin-right: 0.5rem;
+}
+
+#form-contacto {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    animation: fadeInUp 0.6s ease-out;
+}
+
+#form-contacto .btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    transition: all 0.3s ease;
+}
+
+#form-contacto .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+iframe {
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    animation: fadeInUp 0.6s ease-out 0.3s both;
+}
+
+/* Button for psychology services */
+button[data-bs-target="#serviciosPsicologia"] {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+
+/* Button effect for psychology services cards */
+#serviciosPsicologia .card {
+    min-height: 250px;
+    height: 250px;
+}
+
+#serviciosPsicologia .card .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+#serviciosPsicologia .card .card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+#serviciosPsicologia .card .card-text {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    text-align: center;
+    margin-top: 1rem;
+    opacity: 0;
+}
+
+#serviciosPsicologia .card.expanded .card-title {
+    transform: translateY(-30px);
+}
+
+#serviciosPsicologia .card.expanded .card-text {
+    max-height: 200px;
+    opacity: 1;
+}
+
+#serviciosPsicologia .card.expanded .card-body {
+    justify-content: flex-start;
+    padding-top: 2rem;
+}
+
+/* Hero Slideshow Styles */
+.hero-slideshow {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.slideshow-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.7) 100%);
+    z-index: 1;
+}
+
+.hero-content {
+    z-index: 2;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+    color: #fff;
+}
+
+.hero-content .lead {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+    color: #fff !important;
+}
+
+.hero-content .btn {
+    border-radius: 50px;
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.hero-content .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+/* Responsive adjustments for slideshow */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content .lead {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-slideshow {
+        min-height: 50vh;
+    }
+
+    .hero-content h1 {
+        font-size: 1.75rem;
+    }
+}
