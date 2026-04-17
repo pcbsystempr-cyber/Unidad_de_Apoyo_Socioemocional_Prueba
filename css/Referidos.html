@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="../css/styles.css">
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.7/dist/signature_pad.umd.min.js"></script>
+    <script src="../js/emailjs-config.js"></script>
     <style>
         .referidos-card {
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
@@ -114,6 +116,28 @@
             background-clip: text;
         }
         
+        .signature-pad-container {
+            margin-bottom: 0.5rem;
+        }
+
+        .signature-pad {
+            width: 100% !important;
+            height: 100px;
+            touch-action: none;
+            cursor: crosshair;
+        }
+
+        .signature-pad-container {
+            margin-bottom: 0.5rem;
+        }
+
+        .signature-pad {
+            width: 100% !important;
+            height: 100px;
+            touch-action: none;
+            cursor: crosshair;
+        }
+
         @media (max-width: 768px) {
             .referidos-card { padding: 1.5rem; }
             .btn-enviar, .btn-limpiar { width: 100%; margin-bottom: 0.5rem; }
@@ -121,7 +145,11 @@
             .navbar-brand { font-size: 0.9rem; }
             h1 { font-size: 1.5rem; }
             .lead { font-size: 0.95rem; }
+            .signature-pad {
+                height: 80px;
+            }
         }
+        
     </style>
 </head>
 <body>
@@ -331,11 +359,11 @@
                             <div class="col-md-3">
                                 <div class="form-check"><input class="form-check-input" type="checkbox" id="refPSI" value="PSI"><label class="form-check-label" for="refPSI">PSI</label></div>
                             </div>
-                            <div class="col-md-3">
-                                <div class="form-check"><input class="form-check-input" type="checkbox" id="refENF" value="ENF"><label class="form-check-label" for="refENF">ENF</label></div>
-                            </div>
-                        </div>
-                    </div>
+                             <div class="col-md-3">
+                                 <div class="form-check"><input class="form-check-input" type="checkbox" id="refENF" value="ENF"><label class="form-check-label" for="refENF">ENF</label></div>
+                             </div>
+                         </div>
+                     </div>
                 </div>
             </div>
         </div>
@@ -480,26 +508,62 @@
                             <div class="row g-3 mt-2">
                                 <div class="col-md-4">
                                     <label class="form-label small">Persona que Refiere</label>
-                                    <input type="text" class="form-control form-control-sm" style="border: none; border-bottom: 2px solid #333; background: transparent; border-radius: 0; padding: 5px 0;" placeholder="">
-                                    <small class="text-muted">Firma</small>
+                                    <div class="signature-pad-container">
+                                        <canvas id="signaturePersonaRefiere" class="signature-pad" width="300" height="100" style="border: 1px solid #ccc; border-radius: 4px;"></canvas>
+                                        <div class="mt-1">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="clearSignature('signaturePersonaRefiere')">Limpiar</button>
+                                        </div>
+                                    </div>
+                                    <small class="text-muted">Firma digital</small>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label small">Director de Escuela</label>
-                                    <input type="text" class="form-control form-control-sm" style="border: none; border-bottom: 2px solid #333; background: transparent; border-radius: 0; padding: 5px 0;" placeholder="">
-                                    <small class="text-muted">Firma</small>
+                                    <div class="signature-pad-container">
+                                        <canvas id="signatureDirector" class="signature-pad" width="300" height="100" style="border: 1px solid #ccc; border-radius: 4px;"></canvas>
+                                        <div class="mt-1">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="clearSignature('signatureDirector')">Limpiar</button>
+                                        </div>
+                                    </div>
+                                    <small class="text-muted">Firma digital</small>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label small">Personal de Apoyo Asignado</label>
-                                    <input type="text" class="form-control form-control-sm" style="border: none; border-bottom: 2px solid #333; background: transparent; border-radius: 0; padding: 5px 0;" placeholder="">
+                                    <div class="signature-pad-container">
+                                        <canvas id="signaturePersonalApoyo" class="signature-pad" width="300" height="100" style="border: 1px solid #ccc; border-radius: 4px;"></canvas>
+                                        <div class="mt-1">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="clearSignature('signaturePersonalApoyo')">Limpiar</button>
+                                        </div>
+                                    </div>
                                     <small class="text-muted">(TS, CP, EECS o Psicólogo)</small>
                                 </div>
                             </div>
                         </div>
+                                    
 
-                        <div class="d-flex flex-wrap gap-3 mt-4">
-                            <button type="submit" class="btn btn-enviar text-white flex-fill"><i class="fas fa-paper-plane me-2"></i>Enviar Referido</button>
-                            <button type="reset" class="btn btn-limpiar flex-fill"><i class="fas fa-redo me-2"></i>Limpiar</button>
-                        </div>
+<!-- Selección de Profesional Específico -->
+                          <div class="mt-4 p-3 bg-warning bg-opacity-10 rounded border border-warning">
+                              <label class="form-label fw-bold text-warning-emphasis">👤 Profesional Específico (Obligatorio):</label>
+                              <select class="form-select form-select-sm border-warning" id="profesionalEspecifico" required>
+                                  <option value="">Seleccionar profesional</option>
+                                  <optgroup label="TRABAJO SOCIAL">
+                                      <option value='{"nombre":"Kárem Rivera Moreno - Trabajadora Social","email":"de156358@miescuela.pr","area":"Trabajo Social","configKey":"karem_ts"}'>Kárem Rivera Moreno - Trabajadora Social</option>
+                                      <option value='{"nombre":"Janelyz M. Berrios Zayas - Trabajadora Social","email":"de167251@miescuela.pr","area":"Trabajo Social","configKey":"janelys_ts"}'>Janelyz M. Berrios Zayas - Trabajadora Social</option>
+                                  </optgroup>
+                                  <optgroup label="CONSEJERÍA">
+                                      <option value='{"nombre":"Maricarmen García Rivera - Consejera","email":"de85494@miescuela.pr","area":"Consejería","configKey":"maricarmen"}'>Maricarmen García Rivera - Consejera</option>
+                                      <option value='{"nombre":"Sonia I. Cruz Maldonado - Consejera","email":"de58390@miescuela.pr","area":"Consejería","configKey":"sonia"}'>Sonia I. Cruz Maldonado - Consejera</option>
+                                  </optgroup>
+                                  <optgroup label="PSICOLOGÍA">
+                                      <option value='{"nombre":"Jesús Berrios Ortiz - Psicólogo","email":"de161266@miescuela.pr","area":"Psicología","configKey":"psicologo"}'>Jesús Berrios Ortiz - Psicólogo</option>
+                                  </optgroup>
+                              </select>
+                              <small class="text-muted">Seleccione el área de trabajo y luego el profesional específico</small>
+                          </div>
+
+                         <div class="d-flex flex-wrap gap-3 mt-4">
+                             <button type="submit" class="btn btn-enviar text-white flex-fill"><i class="fas fa-paper-plane me-2"></i>Enviar Referido</button>
+                             <button type="reset" class="btn btn-limpiar flex-fill"><i class="fas fa-redo me-2"></i>Limpiar</button>
+                         </div>
                         </form>
                     </div>
                 </div>
@@ -551,7 +615,57 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         (function() { emailjs.init("JEnP4Ol_npOF0u1zF"); })();
-        
+
+        // Initialize signature pads
+        const signaturePads = {};
+
+        function initializeSignaturePads() {
+            const canvasIds = ['signaturePersonaRefiere', 'signatureDirector', 'signaturePersonalApoyo'];
+
+            canvasIds.forEach(id => {
+                const canvas = document.getElementById(id);
+                if (canvas) {
+                    signaturePads[id] = new SignaturePad(canvas, {
+                        backgroundColor: 'rgb(255, 255, 255)',
+                        penColor: 'rgb(0, 0, 0)',
+                        velocityFilterWeight: 0.7,
+                        minWidth: 0.5,
+                        maxWidth: 2.5,
+                        throttle: 16,
+                        minDistance: 5,
+                        dotSize: 1.5,
+                        penPressure: true
+                    });
+
+                    // Make canvas responsive
+                    const resizeCanvas = () => {
+                        const ratio = Math.max(window.devicePixelRatio || 1, 1);
+                        canvas.width = canvas.offsetWidth * ratio;
+                        canvas.height = canvas.offsetHeight * ratio;
+                        canvas.getContext("2d").scale(ratio, ratio);
+                        signaturePads[id].clear(); // Clear after resize
+                    };
+
+                    window.addEventListener("resize", resizeCanvas);
+                    resizeCanvas();
+                }
+            });
+        }
+
+        function clearSignature(canvasId) {
+            if (signaturePads[canvasId]) {
+                signaturePads[canvasId].clear();
+            }
+        }
+
+        // Función para inicializar todo cuando el DOM esté listo
+        function initializeForm() {
+            initializeSignaturePads();
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initializeForm);
+
         const form = document.getElementById('referidoForm');
         const submitBtn = form.querySelector('button[type="submit"]');
         
@@ -581,7 +695,27 @@ submitBtn.disabled = true;
                     indicadoresList.push('<span class="indicador-tag">' + ind.value + '</span>');
                 }
             });
-            
+
+            // Capture signatures
+            const firma_persona_refiere = signaturePads['signaturePersonaRefiere'] && !signaturePads['signaturePersonaRefiere'].isEmpty()
+                ? signaturePads['signaturePersonaRefiere'].toDataURL('image/png')
+                : '';
+            const firma_director = signaturePads['signatureDirector'] && !signaturePads['signatureDirector'].isEmpty()
+                ? signaturePads['signatureDirector'].toDataURL('image/png')
+                : '';
+            const firma_personal_apoyo = signaturePads['signaturePersonalApoyo'] && !signaturePads['signaturePersonalApoyo'].isEmpty()
+                ? signaturePads['signaturePersonalApoyo'].toDataURL('image/png')
+                : '';
+
+            // Validar que se haya seleccionado un profesional
+            const profesionalSelect = document.getElementById('profesionalEspecifico');
+            if (!profesionalSelect.value) {
+                alert('Por favor seleccione un profesional específico para el referido.');
+                return;
+            }
+
+            const profesionalData = JSON.parse(profesionalSelect.value);
+
             const templateParams = {
                 fecha_conocimiento: document.getElementById('fechaConocimiento').value,
                 numero_sie: document.getElementById('numeroSIE').value,
@@ -600,13 +734,29 @@ submitBtn.disabled = true;
                 persona_refiere: document.getElementById('personaRefiere').value,
                 fecha_referido: document.getElementById('fechaReferido').value,
                 referido_a: referidoAList.join(', '),
+                profesional_seleccionado: profesionalData.nombre,
+                email_profesional: profesionalData.email,
+                area_profesional: profesionalData.area,
                 indicadores: indicadoresList.join(' '),
                 observaciones: document.getElementById('observaciones').value,
                 otras_gestiones: document.getElementById('otrasGestiones').value,
-                nota_referidos: document.getElementById('notaReferidos').value
+                nota_referidos: document.getElementById('notaReferidos').value,
+                firma_persona_refiere: firma_persona_refiere,
+                firma_director: firma_director,
+                firma_personal_apoyo: firma_personal_apoyo
             };
-            
-            emailjs.send('service_3xbuvck', 'template_efct73m', templateParams)
+
+            // Usar configuración de EmailJS específica del profesional seleccionado
+            const config = emailjsConfig[profesionalData.configKey];
+
+            if (!config) {
+                alert('Error: Configuración no encontrada para el profesional seleccionado.');
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+                return;
+            }
+
+            emailjs.send(config.serviceID, config.templateID, templateParams)
                 .then(function(response) {
                     console.log('Email enviado exitosamente:', response);
                     window.location.href = '../referido-enviado.html';
