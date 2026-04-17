@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test EmailJS - Sonia</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        #result, #console {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        #console {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            max-height: 300px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 12px;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .info {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+        .log-entry {
+            margin: 5px 0;
+            padding: 5px;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test EmailJS - Consejera Sonia</h1>
+    
+    <div>
+        <h3>Configuración de Sonia:</h3>
+        <p><strong>Email destino:</strong> soniaconsejeravoc@gmail.com</p>
+        <p><strong>Service ID:</strong> service_tl36rip</p>
+        <p><strong>Template ID:</strong> template_pck97ew (mismo de Maricarmen)</p>
+        <p><strong>Public Key:</strong> SCqXLNS1v8MCpsAit</p>
+        <p style="color: #28a745;"><strong>✅ Usando el template de Maricarmen que funciona</strong></p>
+
+        <h4 style="margin-top: 20px;">Campos del Template:</h4>
+        <ul>
+            <li>{{nombre_completo}}</li>
+            <li>{{edad}}</li>
+            <li>{{correo}}</li>
+            <li>{{telefono}}</li>
+            <li>{{telefono_alterno}}</li>
+            <li>{{tipo_consulta}}</li>
+            <li>{{gravedad}}</li>
+            <li>{{hora_cita}}</li>
+        </ul>
+    </div>
+
+    <button onclick="testSoniaEmail()">🧪 Enviar Email de Prueba a Sonia</button>
+    <button onclick="testEmailJSInit()">🔍 Verificar EmailJS</button>
+    <button onclick="clearConsole()">🗑️ Limpiar Consola</button>
+
+    <div id="result"></div>
+
+    <h3>Consola de Depuración:</h3>
+    <div id="console"></div>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        // Configuración de Sonia - Usando el mismo servicio y template de Maricarmen
+        const soniaConfig = {
+            serviceID: 'service_tl36rip',
+            templateID: 'template_pck97ew',  // Mismo template de Maricarmen que funciona
+            publicKey: 'SCqXLNS1v8MCpsAit',
+            toEmail: 'soniaconsejeravoc@gmail.com'
+        };
+
+        function logToConsole(message, type = 'info') {
+            const consoleDiv = document.getElementById('console');
+            const entry = document.createElement('div');
+            entry.className = 'log-entry';
+            entry.innerHTML = `<strong>[${new Date().toLocaleTimeString()}]</strong> ${message}`;
+            consoleDiv.appendChild(entry);
+            consoleDiv.scrollTop = consoleDiv.scrollHeight;
+        }
+
+        function clearConsole() {
+            document.getElementById('console').innerHTML = '';
+            logToConsole('Consola limpiada');
+        }
+
+        function testEmailJSInit() {
+            logToConsole('🔍 Verificando EmailJS...');
+            if (typeof emailjs !== 'undefined') {
+                logToConsole('✅ EmailJS está cargado correctamente');
+                logToConsole('Versión de EmailJS: ' + (emailjs.version || 'desconocida'));
+            } else {
+                logToConsole('❌ ERROR: EmailJS no está cargado');
+            }
+        }
+
+        async function testSoniaEmail() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.className = 'info';
+            resultDiv.textContent = 'Enviando email de prueba...';
+
+            logToConsole('📧 Iniciando prueba de envío a Sonia...');
+            logToConsole('Service ID: ' + soniaConfig.serviceID);
+            logToConsole('Template ID: ' + soniaConfig.templateID);
+            logToConsole('Public Key: ' + soniaConfig.publicKey);
+            logToConsole('To Email: ' + soniaConfig.toEmail);
+
+            // Basado en las variables que vi en tu template
+            const templateParams = {
+                from_name: 'Estudiante de Prueba',
+                edad: '16',
+                from_email: 'estudiante@test.com',
+                telefono: '787-123-4567',
+                telefono_alterno: '787-999-8888'
+            };
+
+            logToConsole('Parámetros a enviar: ' + JSON.stringify(templateParams, null, 2));
+
+            try {
+                logToConsole('⏳ Enviando email...');
+                const response = await emailjs.send(
+                    soniaConfig.serviceID,
+                    soniaConfig.templateID,
+                    templateParams,
+                    soniaConfig.publicKey
+                );
+
+                logToConsole('✅ Respuesta exitosa de EmailJS');
+                logToConsole('Status: ' + response.status);
+                logToConsole('Text: ' + response.text);
+
+                resultDiv.className = 'success';
+                resultDiv.innerHTML = `
+                    <strong>✅ Email enviado exitosamente!</strong><br>
+                    Status: ${response.status}<br>
+                    Text: ${response.text}<br>
+                    <br>
+                    Revisa el correo: <strong>${soniaConfig.toEmail}</strong><br>
+                    (Puede tardar unos segundos en llegar)
+                `;
+            } catch (error) {
+                logToConsole('❌ ERROR al enviar email');
+                logToConsole('Error completo: ' + JSON.stringify(error, null, 2));
+                logToConsole('Error text: ' + (error.text || 'N/A'));
+                logToConsole('Error message: ' + (error.message || 'N/A'));
+
+                resultDiv.className = 'error';
+                resultDiv.innerHTML = `
+                    <strong>❌ Error al enviar email:</strong><br>
+                    ${error.text || error.message || 'Error desconocido'}<br>
+                    <br>
+                    <strong>Posibles causas:</strong><br>
+                    1. El Service ID es incorrecto: <code>${soniaConfig.serviceID}</code><br>
+                    2. El Template ID es incorrecto: <code>${soniaConfig.templateID}</code><br>
+                    3. El Public Key es incorrecto: <code>${soniaConfig.publicKey}</code><br>
+                    4. El template no está configurado correctamente en EmailJS<br>
+                    5. El servicio de email no está activo en EmailJS<br>
+                    <br>
+                    Revisa la consola de depuración abajo para más detalles.
+                `;
+            }
+        }
+
+        // Inicializar
+        window.addEventListener('load', function() {
+            logToConsole('🚀 Página de prueba cargada');
+            testEmailJSInit();
+        });
+    </script>
+</body>
+</html>
+
