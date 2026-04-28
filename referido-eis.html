@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Referido Único al Equipo Interdisciplinario Socioemocional - ESV Pablo Colón Berdecia</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/referido-eis.css">
+</head>
+<body>
+    <!-- Navbar (idéntico al portal) -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow no-print">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="index.html">
+                <img src="galeria/logopcb.png" alt="Logo Escuela" class="logo-navbar me-3">
+                <div>
+                    Unidad de Apoyo Socioemocional<br>
+                    <small>Escuela Superior Vocacional Pablo Colón Berdecia</small>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="psicologia.html">Psicología</a></li>
+                    <li class="nav-item"><a class="nav-link" href="consejeria.html">Consejería</a></li>
+                    <li class="nav-item"><a class="nav-link" href="trabajo_social.html">Trabajo Social</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="referido-eis.html">Referido EIS</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-4 no-print">
+        <!-- Encabezado del formulario -->
+        <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
+            <div>
+                <h1 class="h3 fw-bold mb-1"><i class="fas fa-file-signature me-2 text-primary"></i>Referido Único al Equipo Interdisciplinario Socioemocional</h1>
+                <p class="text-muted mb-0"><strong>Anexo 1</strong> — Departamento de Educación de Puerto Rico</p>
+            </div>
+            <a href="index.html" class="btn btn-outline-secondary btn-sm"><i class="fas fa-arrow-left me-1"></i>Regresar al portal</a>
+        </div>
+
+        <!-- Aviso de confidencialidad -->
+        <div class="alert alert-danger d-flex align-items-start" role="alert">
+            <i class="fas fa-lock fa-lg me-3 mt-1"></i>
+            <div>
+                <strong>DOCUMENTO CONFIDENCIAL</strong> — Este referido forma parte del expediente psicosocial del estudiante y debe manejarse conforme a las normas de confidencialidad aplicables (Ley FERPA, Ley Núm. 85-2018 y Ley 57-2023).
+            </div>
+        </div>
+
+        <!-- Instrucciones oficiales (acordeón) -->
+        <div class="accordion mb-3" id="accInstrucciones">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#colInstrucciones">
+                        <i class="fas fa-info-circle me-2 text-info"></i>Instrucciones oficiales al maestro o persona que realiza el referido
+                    </button>
+                </h2>
+                <div id="colInstrucciones" class="accordion-collapse collapse" data-bs-parent="#accInstrucciones">
+                    <div class="accordion-body small">
+                        <ul class="mb-2">
+                            <li>El documento debe contener toda la información del estudiante. <strong>No se aceptará incompleto.</strong></li>
+                            <li>Forma parte del <strong>expediente psicosocial</strong> del estudiante.</li>
+                            <li>Es de índole <strong>confidencial</strong>.</li>
+                            <li>Deben marcarse las naturalezas de las situaciones o necesidades observadas.</li>
+                            <li>El <strong>trabajador social, consejero profesional y psicólogo</strong> intervendrán según corresponda al área de competencia.</li>
+                            <li>El <strong>director de escuela</strong> asignará la situación según los indicadores observados.</li>
+                            <li>Debe haberse realizado un <strong>mínimo de 3 gestiones</strong> previas antes de radicar el referido.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Barra de progreso y botones -->
+        <div class="card border-0 shadow-sm mb-3 sticky-bar">
+            <div class="card-body py-2">
+                <div class="d-flex flex-wrap align-items-center gap-2">
+                    <div class="flex-grow-1">
+                        <div class="d-flex justify-content-between small mb-1">
+                            <span class="fw-semibold">Progreso</span>
+                            <span><span id="progresoTexto">0%</span></span>
+                        </div>
+                        <div class="progress" style="height:8px;">
+                            <div id="progresoBarra" class="progress-bar bg-success" role="progressbar" style="width:0%"></div>
+                        </div>
+                    </div>
+                    <div class="btn-toolbar gap-2">
+                        <button type="button" class="btn btn-sm btn-outline-success" id="btnGuardarBorrador"><i class="fas fa-save me-1"></i>Guardar borrador</button>
+                        <button type="button" class="btn btn-sm btn-outline-primary" id="btnCargarBorrador"><i class="fas fa-folder-open me-1"></i>Cargar borrador</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary" id="btnLimpiar"><i class="fas fa-eraser me-1"></i>Limpiar</button>
+                        <button type="button" class="btn btn-sm btn-outline-info" id="btnVistaPrevia"><i class="fas fa-eye me-1"></i>Vista previa</button>
+                        <button type="button" class="btn btn-sm btn-primary" id="btnExportarPDF"><i class="fas fa-file-pdf me-1"></i>Exportar PDF</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FORMULARIO PRINCIPAL -->
+        <form id="formReferidoEIS" novalidate>
+            <!-- Datos generales del estudiante -->
+            <section class="card mb-3 shadow-sm">
+                <div class="card-header bg-primary text-white"><i class="fas fa-user-graduate me-2"></i>Datos del estudiante</div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-6"><label class="form-label small fw-semibold">Estudiante <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control form-control-sm" id="estudiante" required></div>
+                        <div class="col-md-2"><label class="form-label small fw-semibold">Edad <span class="text-danger">*</span></label>
+                            <input type="number" min="3" max="30" class="form-control form-control-sm" id="edad" required></div>
+                        <div class="col-md-4"><label class="form-label small fw-semibold">Número de estudiante (SIE) <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control form-control-sm" id="numeroEstudiante" required></div>
+                        <div class="col-md-2"><label class="form-label small fw-semibold">Grado <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control form-control-sm" id="grado" required></div>
+                        <div class="col-md-2"><label class="form-label small fw-semibold">Grupo <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control form-control-sm" id="grupo" required></div>
+                        <div class="col-md-4"><label class="form-label small fw-semibold d-block">Educación Especial <span class="text-danger">*</span></label>
+                            <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="eduEspecial" id="eduEspSi" value="Sí" required><label class="form-check-label small" for="eduEspSi">Sí</label></div>
+                            <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="eduEspecial" id="eduEspNo" value="No"><label class="form-check-label small" for="eduEspNo">No</label></div>
+                        </div>
+                        <div class="col-md-4"><label class="form-label small fw-semibold">Fecha de radicación <span class="text-danger">*</span></label>
+                            <input type="date" class="form-control form-control-sm" id="fechaRadicacion" required></div>
+                        <div class="col-12"><label class="form-label small fw-semibold">Dirección residencial</label>
+                            <input type="text" class="form-control form-control-sm" id="direccion"></div>
+                        <div class="col-md-6"><label class="form-label small fw-semibold">Madre, padre, encargado o tutor legal</label>
+                            <input type="text" class="form-control form-control-sm" id="encargado"></div>
+                        <div class="col-md-2"><label class="form-label small fw-semibold">Tel. madre</label>
+                            <input type="tel" class="form-control form-control-sm" id="telMadre"></div>
+                        <div class="col-md-2"><label class="form-label small fw-semibold">Tel. padre</label>
+                            <input type="tel" class="form-control form-control-sm" id="telPadre"></div>
+                        <div class="col-md-2"><label class="form-label small fw-semibold">Tel. encargado/tutor</label>
+                            <input type="tel" class="form-control form-control-sm" id="telTutor"></div>
+                        <div class="col-md-6"><label class="form-label small fw-semibold">Persona que refiere <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control form-control-sm" id="personaRefiere" required></div>
+                        <div class="col-md-6"><label class="form-label small fw-semibold">Firma de la persona que refiere (nombre en letra de molde) <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control form-control-sm" id="firmaPersonaRefiere" required></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- I. ACADÉMICO -->
+            <section class="card mb-3 shadow-sm seccion-naturaleza" data-categoria="academico">
+                <div class="card-header bg-light fw-bold"><span class="badge bg-primary me-2">I</span>Académico</div>
+                <div class="card-body">
+                    <div class="row g-2 small">
+                        <div class="col-md-6"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="academico" value="Bajo aprovechamiento académico"> Bajo aprovechamiento académico</label></div>
+                        <div class="col-md-6"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="academico" value="Falta de requisito de graduación"> Falta de requisito de graduación</label></div>
+                        <div class="col-md-6"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="academico" value="Riesgo de abandonar la escuela"> Riesgo de abandonar la escuela</label></div>
+                        <div class="col-md-6"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="academico" value="Fracaso o posible fracaso escolar"> Fracaso o posible fracaso escolar</label></div>
+                        <div class="col-md-6"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="academico" value="Problemas de aprendizaje"> Problemas de aprendizaje</label></div>
+                        <div class="col-md-2"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="academico" value="Lectura"> Lectura</label></div>
+                        <div class="col-md-2"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="academico" value="Escritura"> Escritura</label></div>
+                        <div class="col-md-2"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="academico" value="Matemáticas"> Matemáticas</label></div>
+                        <div class="col-md-6"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="academico" value="Invierte o traspone letras al escribir o leer"> Invierte o traspone letras al escribir o leer</label></div>
+                        <div class="col-md-6"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="academico" value="Se tarda en copiar o no copia"> Se tarda en copiar o no copia</label></div>
+                        <div class="col-12"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="academico" value="Dos o más años por debajo del nivel de grado que debe cursar"> Dos o más años por debajo del nivel de grado que debe cursar</label></div>
+                        <div class="col-12"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="academico" value="No ha desarrollado el establecimiento de metas y toma asertiva de decisiones"> El estudiante no ha desarrollado el establecimiento de metas y toma asertiva de decisiones</label></div>
+                        <div class="col-md-6"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="academico" value="Necesidad de establecer programa especial de clases"> Necesidad de establecer programa especial de clases</label></div>
+                        <div class="col-md-3"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="academico" value="Posible dotado"> Posible dotado</label></div>
+                        <div class="col-md-3"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="academico" value="Otro"> Otro <input type="text" class="form-control form-control-sm d-inline-block w-50 ms-1" id="academicoOtro"></label></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- II. ASISTENCIA -->
+            <section class="card mb-3 shadow-sm seccion-naturaleza" data-categoria="asistencia">
+                <div class="card-header bg-light fw-bold"><span class="badge bg-primary me-2">II</span>Asistencia</div>
+                <div class="card-body">
+                    <div class="row g-2 small">
+                        <div class="col-md-3"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="asistencia" value="Tardanzas"> Tardanzas</label></div>
+                        <div class="col-md-3"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="asistencia" value="Cortes de clase"> Cortes de clase</label></div>
+                        <div class="col-md-3"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="asistencia" value="Ausencias injustificadas"> Ausencias injustificadas</label></div>
+                        <div class="col-md-3"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="asistencia" value="Ausencias por hospitalizaciones o reposo en casa prolongada"> Ausencias por hospitalizaciones o reposo en casa prolongada</label></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- III. SALUD MENTAL -->
+            <section class="card mb-3 shadow-sm seccion-naturaleza" data-categoria="salud_mental">
+                <div class="card-header bg-light fw-bold"><span class="badge bg-primary me-2">III</span>Salud mental</div>
+                <div class="card-body">
+                    <h6 class="fw-bold small mt-1">A. Conducta recurrente de agresividad / violencia</h6>
+                    <div class="chk-grid small mb-3">
+                        <label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud_mental" value="Lanza objetos hacia otros"> Lanza objetos hacia otros</label>
+                        <label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud_mental" value="Rompe objetos"> Rompe objetos</label>
+                        <label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud_mental" value="Empuja"> Empuja</label>
+                        <label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud_mental" value="Utiliza palabras soeces hacia sí mismo u otros"> Utiliza palabras soeces hacia sí mismo u otros</label>
+                        <label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud_mental" value="Patrón de golpear a otros estudiantes"> Patrón de golpear a otros estudiantes</label>
+                        <label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud_mental" value="Violencia en el noviazgo"> Violencia en el noviazgo</label>
+                    </div>
+
+                    <h6 class="fw-bold small">B. Necesidades psicológicas</h6>
+                    <div class="chk-grid small mb-3">
+                        <label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud_mental" value="Intranquilidad"> Intranquilidad</label>
+                        <label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud_mental" value="Tristeza"> Tristeza</label>
+                        <label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud_mental" value="Desánimo"> Desánimo</label>
+                        <label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud_mental" value="Llanto frecuente"> Llanto frecuente</label>
+                        <label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud_mental" value="Retraído"> Retraído</label>
+                        <label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud_mental" value="Frustrado"> Frustrado</label>
+                        <label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud_mental" value="Apático / falta de interés"> Apático / falta de interés</label>
+                        <label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud_mental" value="Baja motivación"> Baja motivación</label>
+                        <label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud_mental" value="Irritabilidad / coraje frecuente"> Irritabilidad / coraje frecuente</label>
+                        <label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud_mental" value="Falta de apetito / come en exceso"> Falta de apetito / come en exceso</label>
+                        <label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud_mental" value="Aislamiento"> Aislamiento</label>
+                        <label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud_mental" value="Se duerme en clase"> Se duerme en clase</label>
+                        <label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud_mental" value="Insomnio"> Insomnio</label>
+                        <label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud_mental" value="Hiperactivo"> Hiperactivo</label>
+                        <label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud_mental" value="Hipoactivo"> Hipoactivo</label>
+                        <label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud_mental" value="Dificultad para manejar emociones"> Dificultad para manejar emociones</label>
+                        <label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud_mental" value="Dificultad para manejar el estrés"> Dificultad para manejar el estrés</label>
+                        <label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud_mental" value="Signos y síntomas de trauma"> Signos y síntomas de trauma</label>
+                    </div>
+
+                    <h6 class="fw-bold small">C. Relaciones interpersonales</h6>
+                    <div class="chk-grid small mb-3">
+                        <label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud_mental" value="Dificultad en relaciones interpersonales"> Dificultad en relaciones interpersonales</label>
+                        <label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud_mental" value="Maestro / personal escolar"> Maestro / personal escolar</label>
+                        <label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud_mental" value="Compañeros / pares"> Compañeros / pares</label>
+                        <label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud_mental" value="Familiares o encargados"> Familiares o encargados</label>
+                        <label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud_mental" value="Situaciones familiares"> Situaciones familiares</label>
+                        <label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud_mental" value="Violencia de género o maltrato en el hogar"> Violencia de género o maltrato en el hogar</label>
+                        <label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud_mental" value="Problemas económicos"> Problemas económicos</label>
+                        <label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud_mental" value="Relaciones inadecuadas con padres o encargados"> Relaciones inadecuadas con padres o encargados</label>
+                    </div>
+
+                    <h6 class="fw-bold small">D. Comportamiento relacionado con la sexualidad</h6>
+                    <div class="chk-grid small mb-3">
+                        <label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud_mental" value="Lenguaje sexualizado"> Lenguaje sexualizado</label>
+                        <label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud_mental" value="Preocupación sexual"> Preocupación sexual</label>
+                        <label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud_mental" value="Conductas sexualmente explícitas"> Conductas sexualmente explícitas</label>
+                    </div>
+
+                    <h6 class="fw-bold small">E. Conductas de alto riesgo</h6>
+                    <div class="chk-grid small">
+                        <label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud_mental" value="Uso de drogas"> Uso de drogas</label>
+                        <label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud_mental" value="Uso de alcohol"> Uso de alcohol</label>
+                        <label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud_mental" value="Uso de cigarrillo o vape"> Uso de cigarrillo o vape</label>
+                        <label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud_mental" value="Automutilación"> Automutilación</label>
+                        <label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud_mental" value="Ideas suicidas"> Ideas suicidas</label>
+                        <label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud_mental" value="Intentos suicidas"> Intentos suicidas</label>
+                        <label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud_mental" value="Ideas homicidas"> Ideas homicidas</label>
+                        <label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud_mental" value="Intento homicida"> Intento homicida</label>
+                        <label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud_mental" value="Exposición a conductas de alto riesgo"> Exposición a conductas de alto riesgo</label>
+                        <label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud_mental" value="Otro"> Otro <input type="text" class="form-control form-control-sm d-inline-block w-50 ms-1" id="saludMentalOtro"></label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- IV. SALUD -->
+            <section class="card mb-3 shadow-sm seccion-naturaleza" data-categoria="salud">
+                <div class="card-header bg-light fw-bold"><span class="badge bg-primary me-2">IV</span>Salud</div>
+                <div class="card-body">
+                    <h6 class="fw-bold small">A. Condiciones de salud</h6>
+                    <div class="row g-2 small mb-3">
+                        <div class="col-md-3"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud" value="Asma"> Asma</label></div>
+                        <div class="col-md-3"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud" value="Alergias"> Alergias</label></div>
+                        <div class="col-md-3"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud" value="Epilepsia"> Epilepsia</label></div>
+                        <div class="col-md-3"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud" value="Diabetes"> Diabetes</label></div>
+                        <div class="col-md-3"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud" value="Pediculosis"> Pediculosis</label></div>
+                        <div class="col-md-3"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud" value="Problemas auditivos"> Problemas auditivos</label></div>
+                        <div class="col-md-3"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud" value="Problemas de visión"> Problemas de visión</label></div>
+                        <div class="col-md-3"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud" value="Problemas de la piel"> Problemas de la piel</label></div>
+                        <div class="col-md-6"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud" value="Otro"> Otro <input type="text" class="form-control form-control-sm d-inline-block w-50 ms-1" id="saludOtro"></label></div>
+                    </div>
+                    <h6 class="fw-bold small">B. Embarazadas</h6>
+                    <div class="row g-2 small">
+                        <div class="col-md-4"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud" value="Sospecha de embarazo"> Sospecha de embarazo</label></div>
+                        <div class="col-md-4"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud" value="Embarazo confirmado"> Embarazo confirmado</label></div>
+                        <div class="col-md-4"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="salud" value="Estudiante con hijo/s"> Estudiante con hijo/s</label></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- V. OCUPACIONAL O DE CARRERA -->
+            <section class="card mb-3 shadow-sm seccion-naturaleza" data-categoria="ocupacional">
+                <div class="card-header bg-light fw-bold"><span class="badge bg-primary me-2">V</span>Ocupacional o de carrera</div>
+                <div class="card-body">
+                    <div class="row g-2 small">
+                        <div class="col-md-4"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="ocupacional" value="Decisión vocacional"> Decisión vocacional</label></div>
+                        <div class="col-md-4"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="ocupacional" value="Evaluación ocupacional"> Evaluación ocupacional</label></div>
+                        <div class="col-md-4"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="ocupacional" value="Administración de inventarios de intereses"> Administración de inventarios de intereses</label></div>
+                        <div class="col-md-4"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="ocupacional" value="Destrezas de empleabilidad"> Destrezas de empleabilidad</label></div>
+                        <div class="col-md-4"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="ocupacional" value="Proceso de transición a la vida universitaria"> Proceso de transición a la vida universitaria</label></div>
+                        <div class="col-md-4"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="ocupacional" value="Rehabilitación vocacional"> Rehabilitación vocacional</label></div>
+                        <div class="col-md-6"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="ocupacional" value="Otro"> Otro <input type="text" class="form-control form-control-sm d-inline-block w-50 ms-1" id="ocupacionalOtro"></label></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VI. POSIBLE ACOSO ESCOLAR / CIBERNÉTICO -->
+            <section class="card mb-3 shadow-sm seccion-naturaleza" data-categoria="acoso">
+                <div class="card-header bg-light fw-bold"><span class="badge bg-primary me-2">VI</span>Posible acoso escolar / cibernético</div>
+                <div class="card-body">
+                    <div class="row g-2 small">
+                        <div class="col-md-3"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="acoso" value="Víctima"> Víctima</label></div>
+                        <div class="col-md-3"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="acoso" value="Bravucón"> Bravucón</label></div>
+                        <div class="col-md-3"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="acoso" value="Espectador activo"> Espectador activo</label></div>
+                        <div class="col-md-3"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="acoso" value="Espectador pasivo"> Espectador pasivo</label></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VII. POSIBLE MALTRATO / NEGLIGENCIA -->
+            <section class="card mb-3 shadow-sm seccion-naturaleza" data-categoria="maltrato">
+                <div class="card-header bg-light fw-bold"><span class="badge bg-primary me-2">VII</span>Posible maltrato / negligencia</div>
+                <div class="card-body">
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-3"><label class="form-label small fw-semibold">Número de referido</label>
+                            <input type="text" class="form-control form-control-sm" id="maltratoNumRef"></div>
+                        <div class="col-md-3"><label class="form-label small fw-semibold">Fecha de referido al Depto. de la Familia</label>
+                            <input type="date" class="form-control form-control-sm" id="maltratoFecha"></div>
+                        <div class="col-md-3"><label class="form-label small fw-semibold">Persona que atendió la llamada</label>
+                            <input type="text" class="form-control form-control-sm" id="maltratoPersonaAtendio"></div>
+                        <div class="col-md-3"><label class="form-label small fw-semibold">Naturaleza de la situación</label>
+                            <input type="text" class="form-control form-control-sm" id="maltratoNaturaleza"></div>
+                    </div>
+                    <div class="row g-2 small">
+                        <div class="col-md-3"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="maltrato" value="Explotación"> Explotación</label></div>
+                        <div class="col-md-3"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="maltrato" value="Maltrato psicológico"> Maltrato psicológico</label></div>
+                        <div class="col-md-3"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="maltrato" value="Maltrato institucional"> Maltrato institucional</label></div>
+                        <div class="col-md-3"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="maltrato" value="Maltrato físico"> Maltrato físico</label></div>
+                        <div class="col-md-3"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="maltrato" value="Abuso sexual"> Abuso sexual</label></div>
+                        <div class="col-md-3"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="maltrato" value="Trata humana"> Trata humana</label></div>
+                        <div class="col-md-3"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="maltrato" value="Negligencia educativa"> Negligencia educativa</label></div>
+                        <div class="col-md-3"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="maltrato" value="Negligencia institucional"> Negligencia institucional</label></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VIII. EDUCACIÓN ESPECIAL -->
+            <section class="card mb-3 shadow-sm seccion-naturaleza" data-categoria="educacion_especial">
+                <div class="card-header bg-light fw-bold"><span class="badge bg-primary me-2">VIII</span>Educación especial</div>
+                <div class="card-body">
+                    <div class="row g-2 small">
+                        <div class="col-12"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="educacion_especial" value="Cernimiento para posible registro en el Programa de Educación Especial inicial"> Cernimiento para posible registro en el Programa de Educación Especial inicial</label></div>
+                        <div class="col-12"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="educacion_especial" value="Seguimiento a referido al Programa de Educación Especial psicosocial"> Seguimiento a referido al Programa de Educación Especial psicosocial</label></div>
+                        <div class="col-md-6"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="educacion_especial" value="Análisis de Evaluación de la Escala de Conducta"> Análisis de Evaluación de la Escala de Conducta</label></div>
+                        <div class="col-md-3"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="educacion_especial" value="Historial psicosocial"> Historial psicosocial</label></div>
+                        <div class="col-md-3"><label class="form-check"><input class="form-check-input chk-cat" type="checkbox" name="educacion_especial" value="Revisión del historial"> Revisión del historial</label></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- IX. GESTIONES REALIZADAS POR EL MAESTRO -->
+            <section class="card mb-3 shadow-sm" id="seccionGestionesMaestro">
+                <div class="card-header bg-light fw-bold"><span class="badge bg-primary me-2">IX</span>Gestiones realizadas por el maestro</div>
+                <div class="card-body">
+                    <div class="alert alert-warning small py-2 mb-3"><i class="fas fa-exclamation-triangle me-1"></i>Se requiere un <strong>mínimo de 3 gestiones</strong> previas al referido. Adjunte evidencias cuando aplique.</div>
+                    <div class="row g-2 small mb-3">
+                        <div class="col-md-6"><label class="form-check"><input class="form-check-input chk-gestion" type="checkbox" name="gestion_maestro" value="Orientación a estudiantes"> Orientación a estudiantes</label></div>
+                        <div class="col-md-6"><label class="form-check"><input class="form-check-input chk-gestion" type="checkbox" name="gestion_maestro" value="Asignar tareas especiales"> Asignar tareas especiales</label></div>
+                        <div class="col-md-6"><label class="form-check"><input class="form-check-input chk-gestion" type="checkbox" name="gestion_maestro" value="Entrevistas a padres / encargados"> Entrevistas a padres / encargados</label></div>
+                        <div class="col-md-6"><label class="form-check"><input class="form-check-input chk-gestion" type="checkbox" name="gestion_maestro" value="Implementación de estrategias de manejo de la conducta"> Implementación de estrategias de manejo de la conducta</label></div>
+                        <div class="col-md-6"><label class="form-check"><input class="form-check-input chk-gestion" type="checkbox" name="gestion_maestro" value="Envío de notificaciones por diversos medios de comunicación"> Envío de notificaciones por diversos medios de comunicación</label></div>
+                        <div class="col-md-6"><label class="form-check"><input class="form-check-input chk-gestion" type="checkbox" name="gestion_maestro" value="Referido previo al EIS"> Referido previo al EIS</label></div>
+                        <div class="col-md-6"><label class="form-check"><input class="form-check-input chk-gestion" type="checkbox" name="gestion_maestro" value="Ajustes o acomodos académicos o sala de clases"> Ajustes o acomodos académicos o sala de clases</label></div>
+                        <div class="col-md-6"><label class="form-check"><input class="form-check-input chk-gestion" type="checkbox" name="gestion_maestro" value="Otros"> Otros <input type="text" class="form-control form-control-sm d-inline-block w-50 ms-1" id="gestionOtros"></label></div>
+                    </div>
+
+                    <div class="row g-3">
+                        <div class="col-md-8"><label class="form-label small fw-semibold">Acuerdos con padres o estudiante 1</label>
+                            <input type="text" class="form-control form-control-sm" id="acuerdo1"></div>
+                        <div class="col-md-4"><label class="form-label small fw-semibold d-block">Cumplió</label>
+                            <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="acuerdo1Cumplio" value="Sí"><label class="form-check-label small">Sí</label></div>
+                            <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="acuerdo1Cumplio" value="No"><label class="form-check-label small">No</label></div>
+                        </div>
+                        <div class="col-md-8"><label class="form-label small fw-semibold">Acuerdos con padres o estudiante 2</label>
+                            <input type="text" class="form-control form-control-sm" id="acuerdo2"></div>
+                        <div class="col-md-4"><label class="form-label small fw-semibold d-block">Cumplió</label>
+                            <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="acuerdo2Cumplio" value="Sí"><label class="form-check-label small">Sí</label></div>
+                            <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="acuerdo2Cumplio" value="No"><label class="form-check-label small">No</label></div>
+                        </div>
+                        <div class="col-md-6"><label class="form-label small fw-semibold">Nombre del director de escuela</label>
+                            <input type="text" class="form-control form-control-sm" id="nombreDirector"></div>
+                        <div class="col-md-3"><label class="form-label small fw-semibold">Firma director (en letra de molde)</label>
+                            <input type="text" class="form-control form-control-sm" id="firmaDirector"></div>
+                        <div class="col-md-3"><label class="form-label small fw-semibold">Fecha de entrega</label>
+                            <input type="date" class="form-control form-control-sm" id="fechaEntregaDirector"></div>
+
+                        <div class="col-12"><label class="form-label small fw-semibold d-block mt-2">Personal de apoyo al que le entregó el referido</label>
+                            <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" name="personalApoyo" value="Trabajador social"><label class="form-check-label small">Trabajador social</label></div>
+                            <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" name="personalApoyo" value="Consejero profesional"><label class="form-check-label small">Consejero profesional</label></div>
+                            <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" name="personalApoyo" value="Psicólogo"><label class="form-check-label small">Psicólogo</label></div>
+                            <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" name="personalApoyo" value="Enfermero"><label class="form-check-label small">Enfermero</label></div>
+                        </div>
+                        <div class="col-md-6"><label class="form-label small fw-semibold">Nombre del profesional de apoyo</label>
+                            <input type="text" class="form-control form-control-sm" id="nombreProfesionalApoyo"></div>
+                        <div class="col-md-6"><label class="form-label small fw-semibold">Firma del profesional de apoyo (en letra de molde)</label>
+                            <input type="text" class="form-control form-control-sm" id="firmaProfesionalApoyo"></div>
+                    </div>
+                </div>
+            </section>
+            <!-- SEGUIMIENTO: Gestiones del director -->
+            <section class="card mb-3 shadow-sm">
+                <div class="card-header bg-secondary text-white"><i class="fas fa-user-tie me-2"></i>Gestiones realizadas por el director de escuela</div>
+                <div class="card-body">
+                    <div class="row g-2 small mb-3">
+                        <div class="col-md-6"><label class="form-check"><input class="form-check-input" type="checkbox" name="gestion_director" value="Discusión de referido con el personal de apoyo"> Discusión de referido con el personal de apoyo</label></div>
+                        <div class="col-md-6"><label class="form-check"><input class="form-check-input" type="checkbox" name="gestion_director" value="Discusión de referido con maestros"> Discusión de referido con maestros</label></div>
+                        <div class="col-md-6"><label class="form-check"><input class="form-check-input" type="checkbox" name="gestion_director" value="Orientación a estudiante"> Orientación a estudiante</label></div>
+                        <div class="col-md-6"><label class="form-check"><input class="form-check-input" type="checkbox" name="gestion_director" value="Orientación a padres / encargados"> Orientación a padres / encargados</label></div>
+                        <div class="col-md-4"><label class="form-check"><input class="form-check-input" type="checkbox" name="gestion_director" value="Labor comunitaria"> Labor comunitaria</label></div>
+                        <div class="col-md-4"><label class="form-check"><input class="form-check-input" type="checkbox" name="gestion_director" value="Aplicación reglamento escolar"> Aplicación reglamento escolar</label></div>
+                        <div class="col-md-4"><label class="form-check"><input class="form-check-input" type="checkbox" name="gestion_director" value="Referido al Comité de Disciplina"> Referido al Comité de Disciplina</label></div>
+                        <div class="col-md-12"><label class="form-check"><input class="form-check-input" type="checkbox" name="gestion_director" value="Otros"> Otros <input type="text" class="form-control form-control-sm d-inline-block w-50 ms-1" id="gestionDirectorOtros"></label></div>
+                    </div>
+                    <div class="mb-3"><label class="form-label small fw-semibold">Breve descripción del problema y seguimiento de las gestiones realizadas</label>
+                        <textarea class="form-control form-control-sm" id="descripcionDirector" rows="3"></textarea></div>
+                    <div class="row g-3">
+                        <div class="col-md-5"><label class="form-label small fw-semibold">Nombre</label>
+                            <input type="text" class="form-control form-control-sm" id="nombreDirectorSeg"></div>
+                        <div class="col-md-4"><label class="form-label small fw-semibold">Firma (en letra de molde)</label>
+                            <input type="text" class="form-control form-control-sm" id="firmaDirectorSeg"></div>
+                        <div class="col-md-3"><label class="form-label small fw-semibold">Fecha</label>
+                            <input type="date" class="form-control form-control-sm" id="fechaDirectorSeg"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gestiones del EIS -->
+            <section class="card mb-3 shadow-sm">
+                <div class="card-header bg-secondary text-white"><i class="fas fa-users me-2"></i>Gestiones realizadas por el Equipo Interdisciplinario Socioemocional</div>
+                <div class="card-body">
+                    <div class="row g-2 small">
+                        <div class="col-md-3"><label class="form-check"><input class="form-check-input" type="checkbox" name="eis" value="Trabajador social"> Trabajador social</label></div>
+                        <div class="col-md-3"><label class="form-check"><input class="form-check-input" type="checkbox" name="eis" value="Consejero profesional"> Consejero profesional</label></div>
+                        <div class="col-md-3"><label class="form-check"><input class="form-check-input" type="checkbox" name="eis" value="Enfermero escolar"> Enfermero escolar</label></div>
+                        <div class="col-md-3"><label class="form-check"><input class="form-check-input" type="checkbox" name="eis" value="Psicólogo"> Psicólogo</label></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Historial de referidos -->
+            <section class="card mb-3 shadow-sm">
+                <div class="card-header bg-secondary text-white"><i class="fas fa-history me-2"></i>Historial de referidos y servicios prestados anteriormente</div>
+                <div class="card-body">
+                    <div class="row g-2 small mb-3">
+                        <div class="col-md-6"><label class="form-check"><input class="form-check-input" type="checkbox" name="historial" value="Referido al Departamento de la Familia"> Referido al Departamento de la Familia</label></div>
+                        <div class="col-md-6"><label class="form-check"><input class="form-check-input" type="checkbox" name="historial" value="Referido a ASSMCA"> Referido a ASSMCA</label></div>
+                        <div class="col-md-6"><label class="form-check"><input class="form-check-input" type="checkbox" name="historial" value="Referido al Departamento de Vivienda"> Referido al Departamento de Vivienda</label></div>
+                        <div class="col-md-6"><label class="form-check"><input class="form-check-input" type="checkbox" name="historial" value="Referido a APS"> Referido a APS</label></div>
+                        <div class="col-md-6"><label class="form-check"><input class="form-check-input" type="checkbox" name="historial" value="Orientación al estudiante"> Orientación al estudiante</label></div>
+                        <div class="col-md-6"><label class="form-check"><input class="form-check-input" type="checkbox" name="historial" value="Orientación a padres o encargados sobre situación del estudiante"> Orientación a padres o encargados sobre situación del estudiante</label></div>
+                        <div class="col-md-6"><label class="form-check"><input class="form-check-input" type="checkbox" name="historial" value="Referido a consejero profesional en el escenario escolar"> Referido a consejero profesional en el escenario escolar</label></div>
+                        <div class="col-md-6"><label class="form-check"><input class="form-check-input" type="checkbox" name="historial" value="Referido a Educación Especial"> Referido a Educación Especial</label></div>
+                        <div class="col-md-6"><label class="form-check"><input class="form-check-input" type="checkbox" name="historial" value="Referido a la Policía de Puerto Rico"> Referido a la Policía de Puerto Rico</label></div>
+                        <div class="col-md-6"><label class="form-check"><input class="form-check-input" type="checkbox" name="historial" value="Referido al Departamento de Salud"> Referido al Departamento de Salud</label></div>
+                        <div class="col-md-6"><label class="form-check"><input class="form-check-input" type="checkbox" name="historial" value="Referido al trabajador social escolar"> Referido al trabajador social escolar</label></div>
+                        <div class="col-md-6"><label class="form-check"><input class="form-check-input" type="checkbox" name="historial" value="Otros"> Otros <input type="text" class="form-control form-control-sm d-inline-block w-50 ms-1" id="historialOtros"></label></div>
+                    </div>
+                    <div class="mb-3"><label class="form-label small fw-semibold">Breve descripción y seguimiento de las gestiones realizadas</label>
+                        <textarea class="form-control form-control-sm" id="descripcionHistorial" rows="3"></textarea></div>
+                    <div class="row g-3">
+                        <div class="col-md-5"><label class="form-label small fw-semibold">Nombre</label>
+                            <input type="text" class="form-control form-control-sm" id="nombreHistorial"></div>
+                        <div class="col-md-4"><label class="form-label small fw-semibold">Firma (en letra de molde)</label>
+                            <input type="text" class="form-control form-control-sm" id="firmaHistorial"></div>
+                        <div class="col-md-3"><label class="form-label small fw-semibold">Fecha</label>
+                            <input type="date" class="form-control form-control-sm" id="fechaHistorial"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Anexos pendientes (estructura preparada) -->
+            <section class="card mb-3 shadow-sm border-info">
+                <div class="card-header bg-info text-white"><i class="fas fa-folder-tree me-2"></i>Otros anexos del protocolo (próximamente)</div>
+                <div class="card-body small text-muted">
+                    <ul class="mb-0">
+                        <li><strong>Anexo 2</strong> — Hoja de Referido Interno del EIS</li>
+                        <li><strong>Anexo 3</strong> — Minuta del EIS</li>
+                        <li><strong>Anexo 4</strong> — Hoja de Control de Referidos Recibidos por el Director</li>
+                        <li><strong>Anexo 5</strong> — Hoja de Control de Casos Discutidos por el EIS</li>
+                        <li><strong>Anexo 6</strong> — Hoja de Intervención con Estudiantes</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Botones inferiores duplicados -->
+            <div class="d-flex flex-wrap gap-2 justify-content-end mb-5">
+                <button type="button" class="btn btn-outline-success" id="btnGuardarBorradorBottom"><i class="fas fa-save me-1"></i>Guardar borrador</button>
+                <button type="button" class="btn btn-outline-info" id="btnVistaPreviaBottom"><i class="fas fa-eye me-1"></i>Vista previa</button>
+                <button type="button" class="btn btn-primary" id="btnExportarPDFBottom"><i class="fas fa-file-pdf me-1"></i>Exportar PDF</button>
+            </div>
+        </form>
+    </main>
+
+    <!-- Modal de errores de validación -->
+    <div class="modal fade" id="modalErrores" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title"><i class="fas fa-exclamation-triangle me-2"></i>Faltan datos obligatorios</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="small mb-2">El referido no se puede exportar hasta que complete los siguientes campos:</p>
+                    <ul id="listaErrores" class="small mb-0"></ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Vista previa -->
+    <div class="modal fade" id="modalVistaPrevia" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="fas fa-eye me-2"></i>Vista previa del referido oficial</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div id="contenedorVistaPrevia"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="btnExportarDesdeVista"><i class="fas fa-file-pdf me-1"></i>Exportar PDF</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VISTA OFICIAL OCULTA (se renderiza dentro vía JS) -->
+    <div id="vista-oficial-pdf" aria-hidden="true"></div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3 no-print">
+        <div class="container">
+            <p class="mb-0 small">&copy; 2026 Escuela Superior Vocacional Pablo Colón Berdecia — Unidad de Apoyo Socioemocional</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="js/referido-eis.js"></script>
+</body>
+</html>
+
+
