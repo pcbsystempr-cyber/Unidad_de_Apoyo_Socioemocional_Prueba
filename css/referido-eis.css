@@ -1,0 +1,150 @@
+/* ==============================================================
+   Referido Único al Equipo Interdisciplinario Socioemocional
+   Estilos del formulario en pantalla (no impresión)
+   ============================================================== */
+
+body { background:#f4f6fa; }
+
+/* Barra superior fija con progreso y acciones */
+.sticky-bar {
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+    background: #fff;
+}
+
+/* Tarjetas de sección */
+.card-header { font-weight: 600; }
+.seccion-naturaleza .card-header { background:#eef2ff !important; color:#1e3a8a; border-left: 4px solid #1e3a8a; }
+.seccion-naturaleza .card-header .badge { background:#1e3a8a !important; }
+
+/* Form checks compactos */
+.form-check-input { margin-top: .25rem; }
+.form-check-label.small { line-height: 1.25; }
+.form-check { margin-bottom: .15rem; }
+
+/* Cuadrícula uniforme de checkboxes (flujo multicolumna) */
+.chk-grid { column-count: 3; column-gap: 1.25rem; }
+.chk-grid .form-check { break-inside: avoid; -webkit-column-break-inside: avoid; page-break-inside: avoid; display: block; margin-bottom: .25rem; }
+@media (max-width: 991.98px) { .chk-grid { column-count: 2; } }
+@media (max-width: 575.98px) { .chk-grid { column-count: 1; } }
+
+/* Inputs inline (Otro: ___) */
+.form-check input[type="text"].form-control-sm { vertical-align: middle; height: 26px; padding: 1px 6px; font-size: .8rem; }
+
+/* Resaltar campos requeridos vacíos al validar */
+.form-control.is-invalid, input[type="radio"].is-invalid + label { color:#c0392b; }
+
+/* ==============================================================
+   VISTA OFICIAL DEL DOCUMENTO (PDF)
+   Renderizada dentro de #vista-oficial-pdf y usada por html2canvas + jsPDF.
+   Reglas: blanco y negro, tipo documento DEPR, tamaño carta.
+   ============================================================== */
+
+#vista-oficial-pdf {
+    position: absolute;
+    left: -10000px;
+    top: 0;
+    width: 8.5in;
+    background: #fff;
+}
+
+.doc-oficial {
+    width: 8.5in;
+    min-height: 11in;
+    padding: 0.6in 0.7in;
+    margin: 0 auto;
+    background: #fff;
+    color: #000;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 10.5pt;
+    line-height: 1.35;
+    box-sizing: border-box;
+}
+
+.doc-oficial.page-break { page-break-before: always; }
+
+.doc-oficial h1, .doc-oficial h2, .doc-oficial h3, .doc-oficial h4 {
+    font-family: "Times New Roman", Times, serif;
+    color: #000;
+    text-align: center;
+    margin: 0 0 4px;
+}
+.doc-oficial h1 { font-size: 12pt; font-weight: bold; }
+.doc-oficial h2 { font-size: 11pt; font-weight: bold; text-transform: uppercase; }
+.doc-oficial h3 { font-size: 10.5pt; font-weight: bold; text-align: left; margin-top: 8px; border-bottom: 1px solid #000; padding-bottom: 2px; }
+.doc-oficial h4 { font-size: 10pt; font-weight: bold; text-align: left; margin-top: 6px; }
+
+.doc-oficial .doc-encabezado {
+    text-align: center;
+    border-bottom: 2px solid #000;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+}
+.doc-oficial .doc-encabezado .institucional { font-size: 10pt; line-height: 1.3; }
+.doc-oficial .doc-encabezado .titulo-doc { font-size: 12pt; font-weight: bold; margin-top: 6px; text-transform: uppercase; }
+
+.doc-oficial .conf-banner {
+    border: 1px solid #000;
+    background: #f1f1f1;
+    padding: 4px 8px;
+    margin: 8px 0;
+    font-size: 9pt;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 0.4px;
+}
+
+/* Tablas estilo documento oficial */
+.doc-oficial table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 4px 0 8px;
+    font-size: 10pt;
+}
+.doc-oficial table th, .doc-oficial table td {
+    border: 1px solid #000;
+    padding: 3px 5px;
+    vertical-align: top;
+}
+.doc-oficial table th {
+    background: #e6e6e6;
+    text-align: left;
+    font-weight: bold;
+}
+
+/* Línea para campo cumplimentado */
+.doc-oficial .campo { display: inline-block; min-width: 60px; border-bottom: 1px solid #000; padding: 0 3px; }
+.doc-oficial .campo-largo { display: block; border-bottom: 1px solid #000; min-height: 14px; padding: 0 2px; }
+
+/* Checkboxes oficiales */
+.doc-oficial .chk { font-family: "Segoe UI Symbol", "Arial Unicode MS", Arial, sans-serif; font-size: 11pt; margin-right: 2px; }
+.doc-oficial .chk-line { display: inline-block; margin-right: 12px; white-space: nowrap; }
+
+/* Listas de checkboxes en columnas */
+.doc-oficial .col-list { columns: 2; column-gap: 16px; font-size: 9.5pt; }
+.doc-oficial .col-list-3 { columns: 3; column-gap: 12px; font-size: 9.5pt; }
+.doc-oficial .col-list .chk-line, .doc-oficial .col-list-3 .chk-line { display: block; }
+
+/* Bloques de firma */
+.doc-oficial .firmas { display: flex; justify-content: space-between; margin-top: 14px; gap: 14px; }
+.doc-oficial .firma-bloque { flex: 1; text-align: center; }
+.doc-oficial .firma-bloque .linea-firma { border-top: 1px solid #000; margin-top: 28px; padding-top: 2px; font-size: 9pt; }
+
+.doc-oficial .pie-pagina { text-align: center; font-size: 8.5pt; margin-top: 12px; border-top: 1px solid #000; padding-top: 4px; color:#000; }
+
+/* Modal vista previa: mostrar el documento sin ocultarlo */
+#contenedorVistaPrevia .doc-oficial { box-shadow: 0 0 6px rgba(0,0,0,0.15); margin: 12px auto; }
+
+/* Responsive del formulario */
+@media (max-width: 768px) {
+    .sticky-bar .btn-toolbar { width: 100%; justify-content: flex-end; }
+    .sticky-bar .btn-toolbar .btn { flex: 1 1 auto; }
+}
+
+/* Print fallback (si el usuario usa Ctrl+P) */
+@media print {
+    .no-print { display: none !important; }
+    body { background: #fff; }
+    #vista-oficial-pdf { position: static !important; left: 0 !important; }
+}
